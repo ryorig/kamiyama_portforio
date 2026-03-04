@@ -79,6 +79,64 @@ function initHeroFallback() {
 }
 
 // ============================================
+// Mobile Hamburger Menu
+// ============================================
+function initMobileMenu() {
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (!hamburger || !mobileMenu) return;
+
+  // ハンバーガーボタンのクリックでメニュー開閉
+  hamburger.addEventListener("click", () => {
+    const isOpen = hamburger.classList.toggle("is-open");
+    mobileMenu.classList.toggle("is-open");
+    hamburger.setAttribute("aria-expanded", isOpen);
+    // メニューが開いている間はスクロールを無効化
+    document.body.style.overflow = isOpen ? "hidden" : "";
+  });
+
+  // メニュー内のリンククリックで閉じる
+  mobileMenu.querySelectorAll(".mobile-menu__link").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute("href"));
+
+      // メニューを閉じる
+      hamburger.classList.remove("is-open");
+      mobileMenu.classList.remove("is-open");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+
+      // スムーズスクロール
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      }
+    });
+  });
+}
+
+// ============================================
+// Scroll Header (透明 → 白へ切り替え)
+// ============================================
+function initScrollHeader() {
+  const sidebar = document.getElementById("sidebar");
+  if (!sidebar) return;
+
+  const heroSection = document.querySelector(".hero");
+  const threshold = heroSection ? heroSection.offsetHeight * 0.85 : 100;
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > threshold) {
+      sidebar.classList.add("sidebar--scrolled");
+    } else {
+      sidebar.classList.remove("sidebar--scrolled");
+    }
+  });
+}
+
+// ============================================
 // Init
 // ============================================
 document.addEventListener("DOMContentLoaded", () => {
@@ -86,4 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollReveal();
   initActiveNav();
   initSmoothScroll();
+  initMobileMenu();
+  initScrollHeader();
 });
+

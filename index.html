@@ -17,8 +17,8 @@
   <!-- ========== First View ========== -->
   <div class="first-view">
 
-    <!-- Left Sidebar -->
-    <aside class="sidebar">
+    <!-- Left Sidebar / Mobile Header -->
+    <aside class="sidebar" id="sidebar">
       <div class="sidebar__logo">
         <div class="logo-mark">
           <svg viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,6 +29,13 @@
         <span class="logo-text">. </span>
       </div>
 
+      <!-- ハンバーガーメニューボタン（スマホ版のみ表示） -->
+      <button class="hamburger" id="hamburger" aria-label="メニュー" aria-expanded="false">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+
       <nav class="sidebar__nav">
         <ul class="nav-list">
           <li class="nav-item">
@@ -38,7 +45,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#works" class="nav-link" data-index="02">
+            <a href="#news" class="nav-link" data-index="02">
+              <span class="nav-link__line"></span>
+              <span class="nav-link__text">お知らせ</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#works" class="nav-link" data-index="03">
               <span class="nav-link__line"></span>
               <span class="nav-link__text">作品集</span>
             </a>
@@ -58,6 +71,18 @@
         </a>
       </div>
     </aside>
+
+    <!-- モバイルメニューオーバーレイ -->
+    <div class="mobile-menu" id="mobileMenu">
+      <nav class="mobile-menu__nav">
+        <ul class="mobile-menu__list">
+          <li><a href="#about" class="mobile-menu__link">自己紹介</a></li>
+          <li><a href="#news" class="mobile-menu__link">お知らせ</a></li>
+          <li><a href="#works" class="mobile-menu__link">作品集</a></li>
+          <li><a href="#contact" class="mobile-menu__link">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -103,11 +128,41 @@
     </div>
   </section>
 
+  <!-- ========== News Section ========== -->
+  <section id="news" class="section section--news">
+    <div class="section__inner">
+      <div class="news__layout">
+        <!-- 左側：タイトル＋カテゴリフィルタ -->
+        <div class="news__sidebar">
+          <div class="news__title-area">
+            <div class="news__arc">
+              <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M60 10 C30 10, 10 30, 10 60 C10 90, 30 110, 60 110" stroke="currentColor" stroke-width="1.5"
+                  fill="none" />
+              </svg>
+            </div>
+            <span class="news__vertical-title">お知らせ</span>
+          </div>
+        </div>
+        <!-- 右側：ニュース一覧 -->
+        <div class="news__list">
+          <article class="news__item" data-category="info">
+            <div class="news__meta">
+              <time class="news__date">2026.03.03</time>
+              <span class="news__tag news__tag--info">お知らせ</span>
+            </div>
+            <h3 class="news__item-title">ポートフォリオサイト開設</h3>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== Works Section ========== -->
   <section id="works" class="section section--works">
     <div class="section__inner">
       <div class="section__header">
-        <span class="section__number">02</span>
+        <span class="section__number">03</span>
         <h2 class="section__title">Works</h2>
         <p class="section__title-ja">作品集</p>
       </div>
@@ -150,7 +205,7 @@
   <section id="contact" class="section section--contact">
     <div class="section__inner">
       <div class="section__header">
-        <span class="section__number">03</span>
+        <span class="section__number">04</span>
         <h2 class="section__title">Contact</h2>
         <p class="section__title-ja">お問い合わせ</p>
       </div>
